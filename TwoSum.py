@@ -23,24 +23,34 @@ Output: [0,1]
 '''
 
 
-nums = [3, 2, 4, 8, 15]
+nums = [3,5,5,8]
 target = 10
 cnums = []
+result =[]
+aux = 1
+stop = False
 aux2 = 0
-v = False
-for x in nums:
-    aux = 0
-
-    while aux < len(nums):
-        if nums[aux] == x:
-            x = x
-        else:
-            if x + nums[aux] == target:
-                cnums.append(aux2)
-                cnums.append(aux)
-                v = True
-        aux = aux + 1
-    aux2 += 1
-    if v == True:
+for num in nums:
+    if stop == True:
         break
+    else:
+        for i in range(aux,len(nums)):
+            if (num + nums[i]) == target:
+                cnums.append(num)
+                cnums.append(nums[i])
+                stop = True
+                break
+    aux += 1
+
+for item in cnums:
+    count = 1
+    for i in range (aux2,len(nums)):
+        if item == nums[i]:
+            result.append(i)
+            break
+        else:
+            count +=1
+    aux2 += count
+
+print(result)
 print(cnums)
